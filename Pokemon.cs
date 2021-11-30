@@ -10,6 +10,7 @@ namespace AdeccoTest
 {
     public class Pokemon
     {
+        // I had to set them to public for the JsonSerializer to send them
         public List<Ability> Abilities { get; set; }
         public int BaseXp { get; set; }
         private List<string> Forms { get; set; }
@@ -28,9 +29,11 @@ namespace AdeccoTest
         private List<PokeType> types { get; set; }
         public int weight { get; set; }
         public string locationAreaEncounters { get; set; }
+        
+        
         internal async Task PopulateDetails(JObject current)
         {
-            // new to instanciate the lists before affecting values to them
+            // need to instanciate the lists before affecting values to them
             Abilities = new List<Ability>();
             Forms = new List<string>();
 
@@ -40,7 +43,7 @@ namespace AdeccoTest
             HttpResponseMessage DetailedResponse = await DetailedClient.GetAsync((string)current.GetValue("url"));
             if (DetailedResponse.IsSuccessStatusCode)
             {
-                detailPoke = await DetailedResponse.Content.ReadAsAsync<JObject>(); //that works, has to get the product and serialize now
+                detailPoke = await DetailedResponse.Content.ReadAsAsync<JObject>(); 
             }
 
 
@@ -68,7 +71,7 @@ namespace AdeccoTest
             }
             else
             {
-                //return an error accessing the detailed data
+                //return an error during the access to the data
             }
 
            
