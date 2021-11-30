@@ -7,9 +7,9 @@ namespace AdeccoTest.PokeDetails
 {
     public class Ability
     {
-        private string _name;
-        private bool _isHidden;
-        private int _slot;
+        public string _name;
+        public bool _isHidden;
+        public int _slot;
 
         public Ability(string name, bool isHidden, int slot)
         {

@@ -58,8 +58,9 @@ export class Pokemons extends Component {
   }
 
   async populatePokeData() {
-    const response = await fetch('https://localhost:5001/api/Poke');
+    const response = await fetch('https://localhost:5001/api/Poke'); //the url should be in .env and not hardcoded
     const data = await response.json();
+    // add test if the server returns an error
     this.setState({ Pokes: data, loading: false });
   }
 }
